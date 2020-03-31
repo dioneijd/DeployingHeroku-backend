@@ -17,4 +17,9 @@ app.get('/', (req, res) => {
 })
 
 
+app.get('/users', (req, res) => {
+    return res.send('users')
+})
+
+
 app.listen(process.env.PORT || 3333)
