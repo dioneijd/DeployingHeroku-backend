@@ -5,8 +5,12 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+
 app.use(express.json())
 
+
+const userController = require('./controllers/userController')
+ 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -17,9 +21,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/users', (req, res) => {
-    return res.send('users')
-})
+app.get('/users', userController.index)
+app.post('/users', userController.store)
 
 
 app.listen(process.env.PORT || 3333)
